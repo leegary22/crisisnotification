@@ -46,6 +46,10 @@ declare global {
                         table: 'sys_module'
                         id: '170af3368b5649879fa9a8b5c2128032'
                     }
+                    'components/NotificationDashboard.css': {
+                        table: 'sys_ux_theme_asset'
+                        id: 'b62265cccb254d039de15adb149811df'
+                    }
                     create_recipients_route: {
                         table: 'sys_ws_operation'
                         id: '0568043ff56f46859400aa23792825f9'
@@ -110,6 +114,10 @@ declare global {
                         table: 'sys_security_acl'
                         id: '4f86ce1a802041c5b007e6143ac80b93'
                     }
+                    notification_dashboard_module: {
+                        table: 'sys_app_module'
+                        id: 'bce5cff86a1d4a1db80cd11574ab064f'
+                    }
                     notification_delivery_stats_acl: {
                         table: 'sys_security_acl'
                         id: '926eceb72f9c4364b35168386e354064'
@@ -121,7 +129,7 @@ declare global {
                     notification_management_module: {
                         table: 'sys_app_module'
                         id: 'bba44b95088c422c9657b4bbff823cc5'
-                        deleted: true
+                        deleted: false
                     }
                     notification_priority_setter: {
                         table: 'sys_script'
@@ -205,7 +213,7 @@ declare global {
                     teams_setup_module: {
                         table: 'sys_app_module'
                         id: '633137bf433747f3abdfbec21251327d'
-                        deleted: true
+                        deleted: false
                     }
                     templates_list_module: {
                         table: 'sys_app_module'
@@ -1167,6 +1175,21 @@ declare global {
                         }
                     },
                     {
+                        table: 'sn_glider_source_artifact'
+                        id: '77326580905c4e538c9b563c2e83aa4e'
+                        key: {
+                            name: 'x_snc_crisis_notif_dashboard.do - BYOUI Files'
+                        }
+                    },
+                    {
+                        table: 'sn_glider_source_artifact_m2m'
+                        id: '7764bc1096b840ffbe74f36c66b29365'
+                        key: {
+                            application_file: 'b16256eba0df4122926b97b8e712c583'
+                            source_artifact: '77326580905c4e538c9b563c2e83aa4e'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7883ae7cc938430b893dd65ae752382d'
                         key: {
@@ -1197,6 +1220,13 @@ declare global {
                         key: {
                             name: 'x_snc_crisis_notif_notification_recipient'
                             element: 'teams_conversation_id'
+                        }
+                    },
+                    {
+                        table: 'sys_ux_lib_asset'
+                        id: '7c831c9b658c4bc5b33846439ee0ff18'
+                        key: {
+                            name: 'x_snc_crisis_notif/notification-dashboard'
                         }
                     },
                     {
@@ -1486,6 +1516,14 @@ declare global {
                     },
                     {
                         table: 'sn_glider_source_artifact_m2m'
+                        id: '9d60dc408cfa4c42a2ad22283c324c3e'
+                        key: {
+                            application_file: 'abb1b353f21e4221bc40b269712a393b'
+                            source_artifact: '77326580905c4e538c9b563c2e83aa4e'
+                        }
+                    },
+                    {
+                        table: 'sn_glider_source_artifact_m2m'
                         id: '9df452b290a64294b3c71b2da3f7816e'
                         key: {
                             application_file: 'd064c40139fa4f9ab6cb963feb25e085'
@@ -1545,6 +1583,13 @@ declare global {
                         key: {
                             name: 'x_snc_crisis_notif_notification_recipient'
                             element: 'failure_reason'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_page'
+                        id: 'abb1b353f21e4221bc40b269712a393b'
+                        key: {
+                            endpoint: 'x_snc_crisis_notif_dashboard.do'
                         }
                     },
                     {
@@ -1610,6 +1655,13 @@ declare global {
                             name: 'x_snc_crisis_notif_notification_recipient'
                             element: 'delivery_status'
                             value: 'delivered'
+                        }
+                    },
+                    {
+                        table: 'sys_ux_lib_asset'
+                        id: 'b16256eba0df4122926b97b8e712c583'
+                        key: {
+                            name: 'x_snc_crisis_notif/notification-dashboard.js.map'
                         }
                     },
                     {
@@ -2034,6 +2086,14 @@ declare global {
                             name: 'x_snc_crisis_notif_notification_template'
                             element: 'template_type'
                             value: 'maintenance'
+                        }
+                    },
+                    {
+                        table: 'sn_glider_source_artifact_m2m'
+                        id: 'ed85ee009ebd4537b57820c2decdf20d'
+                        key: {
+                            application_file: '7c831c9b658c4bc5b33846439ee0ff18'
+                            source_artifact: '77326580905c4e538c9b563c2e83aa4e'
                         }
                     },
                     {
