@@ -5,6 +5,30 @@ declare global {
         namespace Internal {
             interface Keys extends KeysRegistry {
                 explicit: {
+                    '238f322f3b7b7250ec0e34eaefc29286': {
+                        table: 'sys_scope_privilege'
+                        id: '238f322f3b7b7250ec0e34eaefc29286'
+                    }
+                    '2b8f322f3b7b7250ec0e34eaefc29271': {
+                        table: 'sys_scope_privilege'
+                        id: '2b8f322f3b7b7250ec0e34eaefc29271'
+                    }
+                    '378f322f3b7b7250ec0e34eaefc2928e': {
+                        table: 'sys_scope_privilege'
+                        id: '378f322f3b7b7250ec0e34eaefc2928e'
+                    }
+                    '3b8f322f3b7b7250ec0e34eaefc292ae': {
+                        table: 'sys_scope_privilege'
+                        id: '3b8f322f3b7b7250ec0e34eaefc292ae'
+                    }
+                    '678f322f3b7b7250ec0e34eaefc2926a': {
+                        table: 'sys_scope_privilege'
+                        id: '678f322f3b7b7250ec0e34eaefc2926a'
+                    }
+                    '7b8f322f3b7b7250ec0e34eaefc292b2': {
+                        table: 'sys_scope_privilege'
+                        id: '7b8f322f3b7b7250ec0e34eaefc292b2'
+                    }
                     admin_separator: {
                         table: 'sys_app_module'
                         id: '0c32168884f74612bcdddc0cbc0d4e14'
@@ -73,6 +97,10 @@ declare global {
                     crisis_notification_write_acl: {
                         table: 'sys_security_acl'
                         id: '43e5513bdc984fa99e1b37f1779ce5be'
+                    }
+                    e38f322f3b7b7250ec0e34eaefc2928a: {
+                        table: 'sys_scope_privilege'
+                        id: 'e38f322f3b7b7250ec0e34eaefc2928a'
                     }
                     notification_approval_validation: {
                         table: 'sys_script'
