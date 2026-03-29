@@ -1,0 +1,123 @@
+.teams-config-form {
+  padding: var(--snx-space-outer);
+}
+
+.teams-config-form__header {
+  margin-bottom: var(--now-static-space--xl, 1.5rem);
+}
+
+.teams-config-form__header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--snx-color-text);
+  margin: 0 0 var(--now-static-space--sm, 0.5rem) 0;
+}
+
+.teams-config-form__header p {
+  color: var(--snx-color-text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.teams-config-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--now-static-space--xl, 1.5rem);
+}
+
+.teams-config-form__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--snx-space-outer);
+}
+
+.form-field__help {
+  font-size: 0.75rem;
+  color: var(--snx-color-text-muted);
+  margin-top: var(--now-static-space--xs, 0.25rem);
+  line-height: 1.4;
+}
+
+.secret-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.secret-input-wrapper .form-field__input {
+  padding-right: 3rem;
+}
+
+.secret-toggle-btn {
+  position: absolute;
+  right: var(--snx-space-inner);
+  background: none;
+  border: none;
+  color: var(--snx-color-text-muted);
+  cursor: pointer;
+  padding: var(--now-static-space--xs, 0.25rem);
+  border-radius: var(--now-static-space--xs, 0.25rem);
+  transition: color 100ms linear, background-color 100ms linear;
+}
+
+.secret-toggle-btn:hover {
+  color: var(--snx-color-text);
+  background-color: rgba(var(--now-color_text--secondary, 75,85,89), 0.1);
+}
+
+.secret-toggle-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--now-color_focus-ring, 53,147,37));
+}
+
+.teams-config-form__checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--snx-space-inner);
+}
+
+.form-field__checkbox-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--now-static-space--xs, 0.25rem);
+}
+
+.checkbox-description {
+  font-size: 0.75rem;
+  color: var(--snx-color-text-muted);
+  font-weight: normal;
+}
+
+.teams-config-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--snx-space-outer);
+  border-top: 1px solid var(--snx-color-border);
+}
+
+.setup-message svg {
+  margin-right: var(--now-static-space--sm, 0.5rem);
+  flex-shrink: 0;
+}
+
+.setup-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--now-static-space--sm, 0.5rem);
+}
+
+@media (max-width: 768px) {
+  .teams-config-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teams-config-form__actions {
+    justify-content: stretch;
+  }
+
+  .teams-config-form__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

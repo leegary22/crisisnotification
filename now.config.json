@@ -1,0 +1,6 @@
+{
+  "scope": "x_snc_crisis_notif",
+  "scopeId": "80a2fa673bf37250ec0e34eaefc2929e",
+  "name": "Crisis Notification",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}
