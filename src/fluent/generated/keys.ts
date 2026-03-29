@@ -14,6 +14,10 @@ declare global {
                         table: 'sys_ws_version'
                         id: '8e59277fe0d04360b5ee735247d0a6c4'
                     }
+                    'app.css': {
+                        table: 'sys_ux_theme_asset'
+                        id: '116fceb08f564efab729ce034f016ff9'
+                    }
                     bom_json: {
                         table: 'sys_module'
                         id: '170af3368b5649879fa9a8b5c2128032'
