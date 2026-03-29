@@ -16,6 +16,7 @@ import './business-rules/workflow-automation-rules.now.ts';
 // Import UI pages
 import './ui-pages/crisis-notification-management.now.ts';
 import './ui-pages/teams-setup.now.ts';
+import './ui-pages/notification-dashboard.now.ts';
 
 // Import roles
 import './roles/crisis-notification-roles.now.ts';
