@@ -133,6 +133,12 @@ export const x_snc_crisis_notif_crisis_notification = Table({
       referenceTable: 'sys_user',
       mandatory: false,
       read_only: true
+    }),
+    bcm_crisis_event: ReferenceColumn({
+      label: 'BCM Crisis Event',
+      referenceTable: 'sn_recovery_event',
+      mandatory: false,
+      display: true
     })
   },
   display: 'title',

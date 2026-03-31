@@ -85,6 +85,53 @@
   font-weight: 500;
 }
 
+/* BCM Crisis Event Search Dropdown */
+.form-field__search-container {
+  position: relative;
+}
+
+.form-field__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgb(var(--now-container--primary--background-color, 255,255,255));
+  border: 1px solid rgb(var(--now-form-control-input--primary--border-color, 202,209,213));
+  border-top: none;
+  border-radius: 0 0 var(--now-form-control-input--primary--border-radius, 2px) var(--now-form-control-input--primary--border-radius, 2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.form-field__dropdown-item {
+  padding: var(--now-static-space--md, 1rem);
+  border-bottom: 1px solid rgb(var(--now-container--primary--border-color, 239,241,242));
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.form-field__dropdown-item:hover {
+  background-color: rgb(var(--now-actionable--secondary--background-color--hover, 247,249,250));
+}
+
+.form-field__dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.form-field__dropdown-title {
+  font-weight: 500;
+  color: rgb(var(--now-text-content--primary--color, 22,31,35));
+  margin-bottom: var(--now-static-space--xs, 0.25rem);
+}
+
+.form-field__dropdown-description {
+  font-size: 0.875rem;
+  color: rgb(var(--now-text-content--secondary--color, 115,127,132));
+  line-height: 1.4;
+}
+
 @media (max-width: 768px) {
   .notification-form {
     margin: 0;

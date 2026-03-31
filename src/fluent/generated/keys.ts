@@ -1311,6 +1311,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '84a5bf12b71540d69ede837b94a9b6d6'
+                        key: {
+                            name: 'x_snc_crisis_notif_crisis_notification'
+                            element: 'bcm_crisis_event'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '8534bd5b1e574db49c8c0f8c07dd7a0a'
                         key: {
@@ -2135,6 +2144,14 @@ declare global {
                         key: {
                             name: 'x_snc_crisis_notif_notification_template'
                             element: 'title_template'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f86b0bb9d5ce4d42a533988b82e60063'
+                        key: {
+                            name: 'x_snc_crisis_notif_crisis_notification'
+                            element: 'bcm_crisis_event'
                         }
                     },
                     {
