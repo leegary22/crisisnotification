@@ -9,6 +9,7 @@ export default function NotificationForm({ service, notification, onSave, onCanc
     message: '',
     severity: 'medium',
     notification_type: 'general',
+    bcm_crisis_event: '',
     target_audience: 'all_users',
     send_to_teams: true,
     send_to_email: false,
@@ -21,6 +22,9 @@ export default function NotificationForm({ service, notification, onSave, onCanc
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [templates, setTemplates] = useState([]);
+  const [bcmCrisisEvents, setBcmCrisisEvents] = useState([]);
+  const [bcmSearchTerm, setBcmSearchTerm] = useState('');
+  const [showBcmDropdown, setShowBcmDropdown] = useState(false);
 
   // Initialize form data when editing
   useEffect(() => {
@@ -31,6 +35,7 @@ export default function NotificationForm({ service, notification, onSave, onCanc
         message: display(notification.message) || '',
         severity: display(notification.severity) || 'medium',
         notification_type: display(notification.notification_type) || 'general',
+        bcm_crisis_event: value(notification.bcm_crisis_event) || '',
         target_audience: display(notification.target_audience) || 'all_users',
         send_to_teams: display(notification.send_to_teams) === 'true',
         send_to_email: display(notification.send_to_email) === 'true',
@@ -39,6 +44,11 @@ export default function NotificationForm({ service, notification, onSave, onCanc
         scheduled_send_time: display(notification.scheduled_send_time) || '',
         expires_on: display(notification.expires_on) || ''
       });
+
+      // If there's a BCM crisis event linked, load its display name
+      if (notification.bcm_crisis_event) {
+        loadBcmEventDisplayName(value(notification.bcm_crisis_event));
+      }
     }
   }, [notification]);
 
@@ -53,6 +63,52 @@ export default function NotificationForm({ service, notification, onSave, onCanc
       setTemplates(templatesData);
     } catch (error) {
       console.error('Failed to load templates:', error);
+    }
+  };
+
+  const loadBcmEventDisplayName = async (eventId) => {
+    try {
+      const response = await fetch(`/api/now/table/sn_recovery_event/${eventId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-UserToken': window.g_ck
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setBcmSearchTerm(data.result.number || eventId);
+      }
+    } catch (error) {
+      console.error('Failed to load BCM event display name:', error);
+      setBcmSearchTerm(eventId);
+    }
+  };
+
+  const searchBcmCrisisEvents = async (searchTerm) => {
+    if (!searchTerm || searchTerm.length < 2) {
+      setBcmCrisisEvents([]);
+      return;
+    }
+
+    try {
+      // Search Recovery Events (Crisis Events) by number field
+      const encodedQuery = `numberLIKE${searchTerm}^ORshort_descriptionLIKE${searchTerm}`;
+      const response = await fetch(`/api/now/table/sn_recovery_event?sysparm_query=${encodedQuery}&sysparm_limit=10`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-UserToken': window.g_ck
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setBcmCrisisEvents(data.result || []);
+      }
+    } catch (error) {
+      console.error('Failed to search BCM crisis events:', error);
     }
   };
 
@@ -83,6 +139,27 @@ export default function NotificationForm({ service, notification, onSave, onCanc
         notification_type: display(template.template_type) || prev.notification_type
       }));
     }
+  };
+
+  const handleBcmSearch = (searchTerm) => {
+    setBcmSearchTerm(searchTerm);
+    searchBcmCrisisEvents(searchTerm);
+    setShowBcmDropdown(searchTerm.length >= 2);
+    
+    // Clear the selected BCM event when searching
+    if (formData.bcm_crisis_event) {
+      handleChange('bcm_crisis_event', '');
+    }
+  };
+
+  const handleBcmEventSelect = (event) => {
+    setFormData(prev => ({
+      ...prev,
+      bcm_crisis_event: event.sys_id
+    }));
+    setBcmSearchTerm(event.number || event.sys_id);
+    setShowBcmDropdown(false);
+    setBcmCrisisEvents([]);
   };
 
   const validateForm = () => {
@@ -260,6 +337,37 @@ export default function NotificationForm({ service, notification, onSave, onCanc
                 <option value="weather">Weather Alert</option>
                 <option value="general">General Announcement</option>
               </select>
+            </div>
+
+            <div className="form-field">
+              <label className="form-field__label">BCM Crisis Event</label>
+              <div className="form-field__search-container">
+                <input
+                  type="text"
+                  className="form-field__input"
+                  value={bcmSearchTerm}
+                  onChange={(e) => handleBcmSearch(e.target.value)}
+                  onFocus={() => bcmSearchTerm.length >= 2 && setShowBcmDropdown(true)}
+                  onBlur={() => setTimeout(() => setShowBcmDropdown(false), 200)}
+                  placeholder="Search by recovery event number..."
+                />
+                {showBcmDropdown && bcmCrisisEvents.length > 0 && (
+                  <div className="form-field__dropdown">
+                    {bcmCrisisEvents.map(event => (
+                      <div
+                        key={event.sys_id}
+                        className="form-field__dropdown-item"
+                        onClick={() => handleBcmEventSelect(event)}
+                      >
+                        <div className="form-field__dropdown-title">{event.number}</div>
+                        {event.short_description && (
+                          <div className="form-field__dropdown-description">{event.short_description}</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="form-field">
